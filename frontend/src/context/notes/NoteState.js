@@ -1,8 +1,8 @@
 import { useState } from 'react';
 import NoteContext from './noteContext';
+import { API } from '../../backend';
 
 const NoteState = (props) => {
-  const host = 'http://localhost:5000';
   const initialnotes = [];
 
   const [notes, setNotes] = useState(initialnotes);
@@ -10,7 +10,7 @@ const NoteState = (props) => {
   // Get/Fetch a Note
 
   const getNote = async () => {
-    const response = await fetch(`${host}/api/notes/fetchnotes`, {
+    const response = await fetch(`${API}/api/notes/fetchnotes`, {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json',
@@ -25,7 +25,7 @@ const NoteState = (props) => {
   // ADD a Note
 
   const addNote = async (title, description, tag) => {
-    const response = await fetch(`${host}/api/notes/addnote`, {
+    const response = await fetch(`${API}/api/notes/addnote`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -40,7 +40,7 @@ const NoteState = (props) => {
   // DELETE a Note
 
   const deleteNote = async (id) => {
-    const response = await fetch(`${host}/api/notes/deletenote/${id}`, {
+    const response = await fetch(`${API}/api/notes/deletenote/${id}`, {
       method: 'DELETE',
       headers: {
         'Content-Type': 'application/json',
@@ -59,7 +59,7 @@ const NoteState = (props) => {
   // Edit a Note
 
   const editNote = async (id, title, description, tag) => {
-    const response = await fetch(`${host}/api/notes/updatenote/${id}`, {
+    const response = await fetch(`${API}/api/notes/updatenote/${id}`, {
       method: 'PUT',
       headers: {
         'Content-Type': 'application/json',

@@ -80,10 +80,10 @@ router.post(
       const passCompare = await bcrypt.compare(password, user.password);
 
       if (!passCompare) {
-        res
+        success = false;
+        return res
           .status(400)
           .json({ success, error: 'Please login with valid credentials' });
-        success = false;
       }
 
       const data = {

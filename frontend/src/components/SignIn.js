@@ -1,6 +1,7 @@
 import React from 'react';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { API } from '../backend';
 
 const SignIn = (props) => {
   let history = useNavigate();
@@ -14,7 +15,7 @@ const SignIn = (props) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     const { name, email, password } = credentials;
-    const response = await fetch('http://localhost:5000/api/auth/createuser', {
+    const response = await fetch(`${API}/api/auth/createuser`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
